@@ -12,20 +12,20 @@
     <title>Dashboard Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="./asset/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/asset/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap table core CSS -->
-    <link href="./asset/css/bootstrap-table.css" rel="stylesheet">
+    <link href="../static/asset/css/bootstrap-table.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="./asset/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="../static/asset/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="./asset/css/dashboard.css" rel="stylesheet">
+    <link href="../static/asset/css/dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="./asset/js/ie-emulation-modes-warning.js"></script>
+    <script src="../static/asset/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,7 +33,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-<script src="./asset/js/index.js"></script>
   <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -102,15 +101,35 @@
 
           <h2 class="sub-header">Task list</h2>
           <div class="table-responsive">
-            <table id="table"
+            <div id="toolbar" class="btn-group">
+              <button type="button" class="btn btn-default">
+                <i class="glyphicon glyphicon-plus"></i>
+              </button>
+              <button type="button" class="btn btn-default">
+                <i class="glyphicon glyphicon-heart"></i>
+              </button>
+              <button type="button" class="btn btn-default">
+                <i class="glyphicon glyphicon-trash"></i>
+              </button>
+            </div>
+            <table data-toggle="table"
+                   data-url="http://127.0.0.1:5000/list"
                    data-sort-name="stargazers_count"
-                   data-sort-order="desc">
+                   data-sort-order="desc"
+                   data-search="true"
+                   data-show-refresh="true"
+                   data-show-toggle="true"
+                   data-show-columns="true"
+                   data-click-to-select="true"
+                   data-toolbar="#toolbar">
               <thead>
                 <tr>
-                  <th data-field="task id">Task ID</th>
-                  <th data-field="version">Version</th>
-                  <th data-field="board">Board</th>
-                  <th data-field="status">Status</th>
+                    <th data-field="state" data-checkbox="true"></th>
+                    <th data-field="task_id">Task ID</th>
+                    <th data-field="version">Version</th>
+                    <th data-field="board">Board</th>
+                    <th data-field="status">Status</th>
+                    <th data-field="date">Date</th>
               </tr>
               </thead>
             </table>
@@ -123,13 +142,14 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="./asset/js/jquery.min.js"><\/script>')</script>
-    <script src="./asset/js/bootstrap.min.js"></script>
-    <script src="./asset/js/bootstrap-table.js"></script>
-    <script src="./asset/js/bootstrap-table-zh-CN.js"></script>
+    <script>window.jQuery || document.write('<script src="../static/asset/js/jquery.min.js"><\/script>')</script>
+    <script src="../static/asset/js/bootstrap.min.js"></script>
+    <script src="../static/asset/js/bootstrap-table.js"></script>
+    <script src="../static/asset/js/bootstrap-table-zh-CN.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="./asset/js/holder.min.js"></script>
+    <script src="../static/asset/js/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./asset/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../static/asset/js/ie10-viewport-bug-workaround.js"></script>
+    <!--<script src="./asset/js/index.js"></script>-->
   </body>
 </html>
