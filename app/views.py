@@ -20,12 +20,13 @@ def add():
     form = request.form
     version = form.get('version')
     board = form.get('board')
-    id = build_pac.apply_async(args=['57', version, board],queue='buildPac',routing_key='buildPac')
-    id = build_pac.apply_async(args=['57', version, board], queue='buildIm',routing_key='buildIm')
-    task_id = "afagasgsgasfas"
+    id_pac = build_pac.apply_async(args=['57', version, board], queue='buildPac', routing_key='buildPac',
+                                   link=build_im.s(args=['57', version, board], queue='buildIm', routing_key='buildIm'))
+    # id_im = build_im.apply_async(args=['57', version, board], queue='buildIm',routing_key='buildIm')
+    task_id = id_pac.id
     todo = Task(task_id=task_id, version=version, board=board, time=datetime.now())
     todo.save()
-    print("sending task ver: %s board: %s" % (version, board))
+    print("sending task ver: %s board: %s id: %s" % (version, board, task_id))
     return jsonify(status="success")
 #
 #
