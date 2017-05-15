@@ -95,7 +95,7 @@
                 <label for="exampleInputName2">Board</label>
                 <input type="text" placeholder="Board" class="form-control">
               </div>
-              <button type="submit" class="btn btn-success">Submit</button>
+              <button id="ajaxBtn" type="submit" class="btn btn-success">Submit</button>
             </form>
           </div>
 
@@ -151,5 +151,21 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../static/asset/js/ie10-viewport-bug-workaround.js"></script>
     <!--<script src="./asset/js/index.js"></script>-->
+    <script>
+    $(function() {
+        //ajax提交
+        $("#ajaxBtn").click(function () {
+            var params = $("#myform").serialize();
+            $.ajax({
+                type: "POST",
+                url: "http://127.0.0.1:5000/add",
+                data: params,
+                success: function (msg) {
+                    alert("success: " + msg);
+                }
+            });
+        })
+    })
+    </script>
   </body>
 </html>
